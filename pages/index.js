@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Script from "next/script"
-import { Box, Heading, Text, Container, Grid, Stack, Button, useDisclosure, Modal, ModalBody, ModalContent, ModalHeader, ModalFooter, ModalCloseButton } from '@chakra-ui/react'
+import dynamic from "next/dynamic"
+import { Box, Heading, Text, Container, Grid, Stack, Button, useDisclosure } from '@chakra-ui/react'
 
+const SquareModal = dynamic(()=> import('../components/squareModal'));
 
 export default function Home() {
 
@@ -36,22 +38,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         
       </Head>
+      
       <Script id="gtm" dangerouslySetInnerHTML={{__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-TDVXC2W');`}} /> 
+      
 
-      <Modal isOpen={isOpen} onOpen={onOpen} onClose={onClose} size="full" isCentered>
-        <ModalContent>
-          <ModalHeader>
-            <ModalCloseButton />
-          </ModalHeader>
-          <ModalBody>
-            <iframe src="//squareup.com/appointments/book/qmbb141ewuo0qw/LGTSXKPQNNMNN/" style={{width: "100%",height: "80vh"}} />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <SquareModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
 
       <Box textAlign="center" my={sectionSpacer}>
         <Container maxW="container.sm">
@@ -197,7 +192,7 @@ export default function Home() {
           </Stack>
         </Container>
         <Box mt={sectionSpacer}>
-          <Image alt="" src="/images/map.png" width={1922} height={933} objectFit="cover"/>
+          <Image alt="" src="/images/map.png" width={1922} height={933} objectFit="cover" layout="responsive" />
         </Box>
       </Box>
         

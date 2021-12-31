@@ -157,19 +157,19 @@ export default function Home() {
               gridRowEnd={[null, null, 3]}> 
             <Testimonial 
               
-              name="One" image="/images/3.png" quote="I've been going to Sydney for the past couple of months and she's exceeded my hair goals every time. I started as a blonde and slowly went darker each appointment. I've always been so impressed with Sydneys work and highly recommend her." />
+              name="One" image="/images/3.png" quote="Jaylon always does an excellent job cutting my hair. I always walk out of the studio feeling confident and happy." />
             </Box>
             <Testimonial 
-              gridColumn={[2]}
+              gridColumn={[1, null, 2]}
               gridRowStart={[null, null, 2]}
               gridRowEnd={[null, null, 5]}
-              name="Two" image="/images/5.png" quote="I've been going to Sydney for the past couple of months and she's exceeded my hair goals every time. I started as a blonde and slowly went darker each appointment. I've always been so impressed with Sydneys work and highly recommend her." />
+              name="Two" image="/images/5.png" quote="Jaylon always does an excellent job cutting my hair. I always walk out of the studio feeling confident and happy." />
             
             <Testimonial 
               gridColumn={[1]}
               gridRowStart={[null, null, 4]}
               gridRowEnd={[null, null, 6]}
-              name="Three" image="/images/4.png" quote="I've been going to Sydney for the past couple of months and she's exceeded my hair goals every time. I started as a blonde and slowly went darker each appointment. I've always been so impressed with Sydneys work and highly recommend her." />
+              name="Three" image="/images/4.png" quote="Jaylon always does an excellent job cutting my hair. I always walk out of the studio feeling confident and happy." />
           </Grid>
         </Container>
       </Box>

@@ -149,7 +149,7 @@ export default function Home() {
                 <Heading size="xl">About Jaylon</Heading>
               </Stack>
 
-              <Text>Born and raised in Oregon, I've worked as a celebrity hairstylist in L.A. — and hair has taken me all over the world — but Portland is where I call home. </Text>
+              <Text>Born and raised in Oregon, I&apos;ve worked as a celebrity hairstylist in L.A. — and hair has taken me all over the world — but Portland is where I call home. </Text>
               <Text>Barbering has been a vessel that has allowed me to be creative in multiple mediums. The experience, knowledge, and people are what keep me passionate to do more.</Text>
               <BookButton isDark alignSelf={["center", null, null, 'start']} />
             </Stack>

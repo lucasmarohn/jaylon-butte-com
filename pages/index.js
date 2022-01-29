@@ -12,21 +12,36 @@ export default function Home() {
   const sectionSpacerLarge = sectionSpacer.map(num => num + 12)
   const sectionSpacerSmall = sectionSpacer.map(num => num / 2)
 
-  const Headline = ({text, color, children, ...props}) => <Text textTransform="uppercase" fontSize="xs" my={0} letterSpacing={.5} color={color || "gray.600"} {...props}>{children}</Text>
+  const Headline = ({text, color, children, ...props}) => <Text textTransform="uppercase" fontSize="md" my={0} letterSpacing={.5} color={color || "gray.700"} {...props}>{children}</Text>
   
   const Testimonial = ({image, quote, name, ...props}) => <Box {...props}>
     <Stack direction="column" align="center" textAlign="center" spacing={6}>
       <Box borderRadius="50%" overflow="hidden" w="125px" h="125px">
         <Image alt="" src={image} width={300} height={300} objectFit="cover" />
       </Box>
-      <Text fontSize="sm">{quote}</Text>
-      <Headline color="gray.500">— {name}</Headline>
+      <Text fontSize="md" maxW="300px">{quote}</Text>
+      <Headline color="gray.600">— {name}</Headline>
     </Stack>
   </Box>
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const BookButton = () => <Button className="book-button" colorScheme="whiteAlpha" onClick={() => onOpen()}>Book an Appointment Online</Button>
+  const BookButton = ({isDark, ...props}) => <Button className="book-button" 
+  colorScheme={isDark ? "gray" : "whiteAlpha"} 
+  id="book_button"
+  size="lg"
+  bg={isDark ? "gray.800" : null} 
+  color={isDark ? "white" : null} 
+  _hover={isDark ? {
+    bg: 'gray.900',
+    color: 'white'
+  } : null}
+  _active={isDark ? {
+    bg: 'black',
+    color: 'white'
+  } : null}
+  onClick={() => onOpen()} 
+  {...props}>Book an Appointment Online</Button>
   
   return (
     <Box as="main">
@@ -53,26 +68,27 @@ export default function Home() {
           <Stack direction="column">
             <Heading mb={sectionSpacerSmall}>Jaylon Butte</Heading>
             <Stack direction="column" spacing={6}>
-              <Heading as="h1" size="sm">Natural Portland Cut &amp; Color</Heading>
-              <Heading as="h2" size="xl">Enhance the natural beauty of your hair</Heading>
-              <Text>You deserve healthy, natural looking hair. I&apos;ll help you amplify the best qualities of your hair using natural products and techniques.</Text>
+              <Stack spacing={2}>
+                <Headline as="h1">Understand What Hairstyle Best Suits You</Headline>
+                <Heading as="h2" size="xl">A Haircut Tailored to You</Heading>
+              </Stack>
+              <Text fontSize="lg">You will go through a consultation to examine head shape, hair texture, and growth patterns to determine the best hairstyle for you. I specialize in all textures and hair types.</Text>
+              <BookButton isDark alignSelf="center" />
             </Stack>
           </Stack>
         </Container>
       </Box>
 
       <Box mt={sectionSpacer}>
-        <Container textAlign="center">
-          <Headline>Real Client Photos</Headline>
-        </Container>
 
         <Grid 
           className="client-photos"
-          templateColumns={['repeat(2, 1fr)', 'repeat(4, 1fr)']}>
-          <Image alt="" src="/images/1.png" width={900} height={900 * 4 / 3} objectFit="cover" />
+          templateColumns={['repeat(2, 1fr)', null, 'repeat(4, 1fr)']} bg="black">
+          
           <Image alt="" src="/images/3.png" width={900} height={900 * 4 / 3} objectFit="cover" />
+          <Box opacity=".95"><Image alt="" src="/images/1.png" width={900} height={900 * 4 / 3} objectFit="cover" layout="responsive" /></Box>
           <Image alt="" src="/images/4.png" width={900} height={900 * 4 / 3} objectFit="cover" />
-          <Image alt="" src="/images/2.png" width={900} height={900 * 4 / 3} objectFit="cover" />
+          <Box opacity=".95"><Image alt="" src="/images/2.png" width={900} height={900 * 4 / 3} objectFit="cover" layout="responsive" /></Box>
         </Grid>
       </Box>
 
@@ -90,37 +106,30 @@ export default function Home() {
 
       <Box my={sectionSpacer}>
         <Container>
-          <Stack direction="column" spacing={6}>
-            <Stack direction="column" spacing={0} textAlign="center">
-              <Headline text="Hair Health + Integrity" my={0} />
-              <Heading size="xl" my={0}>I&apos;ll never overdo it</Heading>
+          <Stack direction="column" spacing={12}>
+            <Stack direction="column" spacing={0} textAlign="center" align="center">
+              <Headline my={0}>In The Chair</Headline>
+              <Heading size="xl" my={0}>What To Expect</Heading>
+
+              <Text maxW="container.sm" pt="20px" fontSize="xl">My goal is to make you feel confident and look your best, and that takes time and attention to detail.</Text>
             </Stack>
             
             <Grid templateColumns={["100%", "repeat(2, 1fr)"]} gridGap={8} textAlign={["center", "left"]}>
-              <Box>
-                <Heading size="sm">A Natural Extension of Yourself</Heading>
-                <Text>If you&apos;ve had a nightmare coloring experience you know how awful it is to step onto the street feeling like an entirely different person.</Text>
-              </Box>
-              <Box>
-                <Heading size="sm">A Natural Extension of Yourself</Heading>
-                <Text>If you&apos;ve had a nightmare coloring experience you know how awful it is to step onto the street feeling like an entirely different person.</Text>
-              </Box>
+              <Stack spacing={6}>
+                <Heading size="sm">QUALITY OVER QUANTITY</Heading>
+                <Text>1 Hour is set aside for each appointment to ensure the proper detail and quality go into every haircut.</Text>
+                
+              </Stack>
+              <Stack spacing={6}>
+                <Heading size="sm">STYLING &amp; MAINTENANCE</Heading>
+          
+                <Text>We will go over what styling techniques and products you need in order to recreate and maintain a consistent look from home.</Text>
+              </Stack>
             </Grid>
-          </Stack>
-        </Container>
-      </Box>
-
-      <Box bg="black" color="white" w="100%">
-        <Container py={sectionSpacerLarge} textAlign="center" maxW="container.sm">
-          <Stack direction="column" align="center" spacing={6}>
-            <Stack direction="column">
-              <Headline size="sm" color="white">My Promise To You</Headline>
-              <Heading size="xl">Free Second Session</Heading>
-            </Stack>
-            <Text>Want more color? Schedule another appointment within a week of your initial coloring session and Ill further amplify your initial coloring for free</Text>
+            <Text maxW="500px" fontSize="sm" textAlign="center" mx="auto" alignSelf="center">If you are looking for a quick in and out barber then this experience might not be for you. </Text>
             <BookButton />
           </Stack>
-        </Container> 
+        </Container>
       </Box>
 
 
@@ -140,7 +149,9 @@ export default function Home() {
                 <Heading size="xl">About Jaylon</Heading>
               </Stack>
 
-              <Text>I want to enhance the beauty that is already within your hair and make your hair dreams reality while keeping health + integrity the main priority.</Text>
+              <Text>Born and raised in Oregon, I've worked as a celebrity hairstylist in L.A. — and hair has taken me all over the world — but Portland is where I call home. </Text>
+              <Text>Barbering has been a vessel that has allowed me to be creative in multiple mediums. The experience, knowledge, and people are what keep me passionate to do more.</Text>
+              <BookButton isDark alignSelf={["center", null, null, 'start']} />
             </Stack>
           </Grid>
           
@@ -157,19 +168,19 @@ export default function Home() {
               gridRowEnd={[null, null, 3]}> 
             <Testimonial 
               
-              name="One" image="/images/3.png" quote="Jaylon always does an excellent job cutting my hair. I always walk out of the studio feeling confident and happy." />
+              name="QUENTIN" image="/images/quentin.jpg" quote="Precise attention to detail on every haircut. Always consistent." />
             </Box>
             <Testimonial 
               gridColumn={[1, null, 2]}
               gridRowStart={[null, null, 2]}
               gridRowEnd={[null, null, 5]}
-              name="Two" image="/images/5.png" quote="Jaylon always does an excellent job cutting my hair. I always walk out of the studio feeling confident and happy." />
+              name="SEAN" image="/images/sean.jpg" quote="Jaylon is always on point with his communication and haircuts. Being able to count on your barber is crucial." />
             
             <Testimonial 
               gridColumn={[1]}
               gridRowStart={[null, null, 4]}
               gridRowEnd={[null, null, 6]}
-              name="Three" image="/images/4.png" quote="Jaylon always does an excellent job cutting my hair. I always walk out of the studio feeling confident and happy." />
+              name="NIKO" image="/images/niko.jpg" quote="Most consistent and punctual barber in the city." />
           </Grid>
         </Container>
       </Box>
@@ -188,8 +199,12 @@ export default function Home() {
               <Headline>Find Me At</Headline>
               <Heading size="xl">People on Mars Studio</Heading>
             </Stack>
-            <Text>210 SE Madison St, Suite 20, <br/> Portland, OR 97214</Text>
+            <Text pb="50px">
+              <address>210 SE Madison St, Suite 20, <br/> Portland, OR 97214</address>
+            </Text>
+            <BookButton isDark alignSelf="center" />
           </Stack>
+          
         </Container>
         <Box mt={sectionSpacer}>
           <Image alt="" src="/images/map.png" width={1922} height={933} objectFit="cover" layout="responsive" />

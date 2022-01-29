@@ -120,7 +120,6 @@ export default function Home() {
               <Stack spacing={6}>
                 <Heading size="sm">QUALITY OVER QUANTITY</Heading>
                 <Text>1 Hour is set aside for each appointment to ensure the proper detail and quality go into every haircut.</Text>
-                <Text maxW="500px" fontSize="sm">If you are looking for a quick in and out barber then this experience might not be for you. </Text>
               </Stack>
               <Stack spacing={6}>
                 <Heading size="sm">STYLING &amp; MAINTENANCE</Heading>
